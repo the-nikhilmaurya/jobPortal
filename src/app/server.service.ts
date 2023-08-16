@@ -78,7 +78,7 @@ export class ServerService {
 
 
     // check email for registration
-    checkEmail(email:string){
+    checkEmail(email:string):Observable<any>{
       console.log(email)
       return this.http.get(`http://localhost:3000/checkemail/${email}`);
     }

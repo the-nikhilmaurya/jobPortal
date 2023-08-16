@@ -14,7 +14,9 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./recruiter.component.css']
 })
 export class RecruiterComponent implements OnInit {
-  constructor(public dialog: MatDialog, private router:Router,private route:ActivatedRoute ,private apiCalls:ServerService) {}
+  constructor(public dialog: MatDialog, private router:Router,private route:ActivatedRoute ,private apiCalls:ServerService) {
+    
+  }
   dataSource!: MatTableDataSource<any>
   @ViewChild('paginator') paginator!: MatPaginator;
 
@@ -22,10 +24,10 @@ export class RecruiterComponent implements OnInit {
     const storedData = localStorage.getItem('userdata');
     if (storedData !== null) {
       let data: { email: string, password: string, usertype: string } = JSON.parse(storedData);
-      console.log("Data from local storage:", data.email);
+      // console.log("Data from local storage:", data.email);
       return data.email
     } else {
-      console.log("No data found in local storage");
+      // console.log("No data found in local storage");
       return ""
     }
   }
@@ -36,8 +38,8 @@ export class RecruiterComponent implements OnInit {
   loadData(){
     this.apiCalls.showJobs(this.email).subscribe((res)=>{
       this.response = res
-      console.log(res)
-      console.log(this.response)
+      // console.log(res)
+      // console.log(this.response)
       this.dataSource = new MatTableDataSource(this.response);
       this.dataSource.paginator = this.paginator;
     
@@ -48,24 +50,18 @@ export class RecruiterComponent implements OnInit {
     this.loadData()
   }
 
- 
- 
   displayedColumns: string[] = ['id', 'jobtitle', 'salary', 'seekers', 'actions'];
-  
- 
- 
- 
-  
 
   viewJob(id:any){
-    console.log(id)
+    // console.log(id)
 
   }
   deleteJob(id:any){
-    console.log(id)
+    // console.log(id)
     this.apiCalls.deleteJob(id).subscribe((res)=>{
       this.response = res
-      console.log(res)
+      this.loadData()
+      // console.log(res)
     })
 
   }
@@ -75,7 +71,7 @@ export class RecruiterComponent implements OnInit {
   exists:boolean = false
   onView(id:number){
     this.exists = true
-    console.log(id)
+    // console.log(id)
     this.apiCalls.viewJob(id).subscribe((res)=>{
       this.viewReponse = res
     })
@@ -86,13 +82,20 @@ export class RecruiterComponent implements OnInit {
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(AddJobsComponent, {
+    const ref =   this.dialog.open(AddJobsComponent, {
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
     });
+
+    ref.afterClosed().subscribe(()=>{
+      // console.log("from ref")
+      this.loadData()
+    })
+ 
   }
 
+  
 
 }
 

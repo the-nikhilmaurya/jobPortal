@@ -7,7 +7,7 @@
         </mat-card-header>
 
         <mat-card-content>
-<!-- {{email}} -->
+            {{email}}
             <!-- name -->
             <div>
                 <mat-form-field class="example-full-width" appearance="outline">
@@ -20,10 +20,11 @@
             <div>
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Email</mat-label>
-                    <input name="email" matInput email required ngModel>
+                    <input name="email" matInput email required [(ngModel)]="email">
                     <mat-hint class="danger" *ngIf="formDetails.controls['email']?.touched && !formDetails.controls['email']?.valid ">email is Invalid</mat-hint>
                     <!-- <mat-hint class="danger" *ngIf="formDetails.controls['email']?.touched   && !formDetails.controls['email']?.valid && formDetails.controls['email']?.dirty ">email is invalid</mat-hint> -->
                 </mat-form-field>
+            <mat-hint class="danger" [style.display]="error ? 'none' : 'block'">Email exists</mat-hint>
             </div>
 
             <!-- password -->

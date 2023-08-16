@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {  Component, OnInit, ViewChild } from '@angular/core';
 import { ServerService } from '../server.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -8,7 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './seeker.component.html',
   styleUrls: ['./seeker.component.css']
 })
-export class SeekerComponent implements OnInit,AfterViewInit {
+export class SeekerComponent implements OnInit {
   
   constructor(private apiCalls:ServerService){}
   response: any[] = []; 
@@ -21,8 +21,8 @@ export class SeekerComponent implements OnInit,AfterViewInit {
 
   loadJobs(){
     this.apiCalls.showAllJobs().subscribe((res)=>{
-      console.log(res)
-      this.response = res
+      // console.log(res)
+      this.response = res 
       this.dataSource = res
       this.dataSource = new MatTableDataSource(this.response);
       this.dataSource.paginator = this.paginator;
@@ -33,10 +33,10 @@ export class SeekerComponent implements OnInit,AfterViewInit {
     const storedData = localStorage.getItem('userdata');
     if (storedData !== null) {
       let data: { email: string, password: string, usertype: string } = JSON.parse(storedData);
-      console.log("Data from local storage:", data.email);
+      // console.log("Data from local storage:", data.email);
       return data.email
     } else {
-      console.log("No data found in local storage");
+      // console.log("No data found in local storage");
       return ""
     }
   }
@@ -47,20 +47,17 @@ export class SeekerComponent implements OnInit,AfterViewInit {
       // this.dataSource = new MatTableDataSource(this.response);
       // this.dataSource.paginator = this.paginator;
   }
-  ngAfterViewInit(): void {
-    // this.dataSource = new MatTableDataSource(this.response);
-    // this.dataSource.paginator = this.paginator;
-  }
+  
   
  
 pageSizes = [2,4,6];
 
   onApply(id:number){
-    console.log(id)
+    // console.log(id)
     console.log(this.email+" from appy")
     const data = {email: this.email}
     this.apiCalls.applyJob(id,data).subscribe((res)=>{
-      console.log(res)
+      // console.log(res)
     })
 
   }
@@ -68,7 +65,7 @@ pageSizes = [2,4,6];
   exists:boolean = false
   onView(id:number){
     this.exists = true
-    console.log(id)
+    // console.log(id)
     this.apiCalls.viewJob(id).subscribe((res)=>{
       this.viewReponse = res
     })
