@@ -9,7 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 
 const routes: Routes = [
-  {path:'',redirectTo:'/signIn',pathMatch:'full'},
+  {path:'',redirectTo:'/signIn',pathMatch:'full'},      //default page
   {path:'registration',component:RegistrationComponent},
   {path:'signIn', component:SignInComponent},
   {path:'recruiter',canActivate:[AuthguradService],component:RecruiterComponent},

@@ -19,7 +19,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AddJobsComponent } from './add-jobs/add-jobs.component';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatTableModule} from '@angular/material/table'; // referece recruiter
-// import { ServerService } from './server.service';
+
 import { HttpClientModule } from '@angular/common/http';
 import {MatToolbarModule} from '@angular/material/toolbar'; // navigation bar
 import { AuthService } from '../services/auth.service';
