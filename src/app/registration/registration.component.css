@@ -1,0 +1,22 @@
+.d-flex{
+    display: flex;
+    justify-content: center;
+}
+
+.card{
+    /* min-width: 293px; */
+    /* max-width: 800px; */
+    padding-left: 3%;
+    padding-right: 3%;
+}
+.example-full-width {
+    width: 100%;
+  }
+
+#btn-register{
+    width: 40%;
+}
+.danger{
+    color:red;
+}
+

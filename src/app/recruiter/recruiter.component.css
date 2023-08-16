@@ -1,0 +1,42 @@
+.container{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 30px;
+
+}
+
+#btnAdd{
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-top: 8px;
+    padding-bottom: 5px;
+}
+
+.card{
+   
+    display:flex;
+    justify-content: center;
+    padding-left: 3%;
+    padding-right: 3%;
+    position: fixed;
+    top:100px;
+    left:30%;
+    right:30%;
+    z-index: 2;
+    height: 30%;
+
+}
+.viewd-flex{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+label{
+    margin-left: 20px;
+    padding-left: 3%;
+    padding-right: 3%;
+    /* border: 1px solid black; */
+
+}

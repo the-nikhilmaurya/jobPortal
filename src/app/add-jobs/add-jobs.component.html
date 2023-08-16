@@ -1,0 +1,84 @@
+
+
+
+    <!-- <form (ngSubmit)="addJob()" #addJobForm="ngForm"> -->
+        <div class="d-flex">
+            <h1 mat-dialog-title>Add JOBS</h1>
+        </div>
+        <mat-dialog-content>
+
+            <form (ngSubmit)="addJob()" #addJobForm="ngForm">
+            <div class="d-flex">
+                <mat-card class="card">
+
+                    <mat-card-content>
+                        <span class="danger" [style.display]="error ? 'block' : 'none'">"problem inserting data
+                            reLogIn"</span>
+
+                        <!-- email disabled -->
+                        <!-- <div style="display: none;">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input name='email'  [(ngModel)]="email" matInput >
+                </mat-form-field>
+            </div>  -->
+
+                        <!-- JobTitle -->
+                        <div>
+                            <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>JobTitle</mat-label>
+                                <input name='jobtitle' required ngModel matInput>
+                                <mat-hint class="danger"
+                                    *ngIf="addJobForm.controls['jobTitle']?.touched && !addJobForm.controls['jobTitle'].valid">JobTitle
+                                    is required</mat-hint>
+                            </mat-form-field>
+                        </div>
+
+                        <!-- salary -->
+                        <div>
+                            <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>Salary</mat-label>
+                                <input name='salary' required pattern="^[0-9]+$" ngModel matInput>
+                                <mat-hint class="danger"
+                                    *ngIf="addJobForm.controls['salary']?.touched && !addJobForm.controls['salary'].valid">Numerical
+                                    value needed </mat-hint>
+                            </mat-form-field>
+                        </div>
+
+                        <!-- location -->
+                        <div>
+                            <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>location</mat-label>
+                                <input name='location' required ngModel matInput>
+                                <mat-hint class="danger"
+                                    *ngIf="addJobForm.controls['location']?.touched && !addJobForm.controls['location'].valid">location
+                                    is required</mat-hint>
+                            </mat-form-field>
+                        </div>
+
+                        <!-- description -->
+                        <div>
+                            <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>Description</mat-label>
+                                <textarea name='description' required ngModel matInput> </textarea>
+                                <mat-hint class="danger"
+                                    *ngIf="addJobForm.controls['description']?.touched && !addJobForm.controls['description'].valid">description
+                                    is required</mat-hint>
+                            </mat-form-field>
+                        </div>
+
+                        <div mat-dialog-actions class="d-flex">
+                            <button mat-flat-button color="primary" mat-dialog-close>close</button>
+                            <button type="submit" [disabled]="!addJobForm.valid" mat-raised-button color="primary"
+                                mat-dialog-close>ADD</button>
+                        </div>
+
+                    </mat-card-content>
+                    
+                    
+                </mat-card>
+            </div>
+            </form>
+           
+        
+    

@@ -1,0 +1,16 @@
+.navbar{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 20px;
+    border: 4px solid black;
+    width: 100%;
+}
+
+.logoutbtn{
+    display: flex;
+    flex-direction: row-reverse;
+  /* margin-block-start: 70%; */
+  /* border: 3px solid white; */
+  width: 100%;
+
+}
