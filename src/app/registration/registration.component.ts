@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ServerService } from '../server.service';
+// import { ServerService } from '../server.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ServerService } from 'src/services/server.service';
 
 @Component({
   selector: 'app-registration',

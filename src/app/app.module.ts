@@ -19,13 +19,14 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AddJobsComponent } from './add-jobs/add-jobs.component';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatTableModule} from '@angular/material/table'; // referece recruiter
-import { ServerService } from './server.service';
+// import { ServerService } from './server.service';
 import { HttpClientModule } from '@angular/common/http';
 import {MatToolbarModule} from '@angular/material/toolbar'; // navigation bar
-import { AuthService } from './auth.service';
-import { AuthguradService } from './authgurad.service';
+import { AuthService } from '../services/auth.service';
+import { AuthguradService } from '../services/authgurad.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { ServerService } from '../services/server.service'
 
 
 @NgModule({

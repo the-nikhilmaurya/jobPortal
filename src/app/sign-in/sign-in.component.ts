@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ServerService } from '../server.service';
-import { AuthService } from '../auth.service';
+// import { ServerService } from '../server.service';
+import { AuthService } from '../../services/auth.service';
+import { ServerService } from 'src/services/server.service';
 
 @Component({
   selector: 'app-sign-in',

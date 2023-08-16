@@ -4,7 +4,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { RecruiterComponent } from './recruiter/recruiter.component';
 import { SeekerComponent } from './seeker/seeker.component';
-import { AuthguradService } from './authgurad.service';
+import { AuthguradService } from '../services/authgurad.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 

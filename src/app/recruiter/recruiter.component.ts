@@ -2,10 +2,11 @@ import { AfterContentChecked, AfterContentInit, Component, DoCheck, OnChanges, O
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { AddJobsComponent } from '../add-jobs/add-jobs.component';
-import { ServerService } from '../server.service';
+// import { ServerService } from '../server.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
+import { ServerService } from 'src/services/server.service';
 
 
 @Component({

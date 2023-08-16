@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { ServerService } from '../server.service';
+// import { ServerService } from '../server.service';
 import { NgForm } from '@angular/forms';
+import { ServerService } from 'src/services/server.service';
 
 @Component({
   selector: 'app-add',

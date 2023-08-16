@@ -1,7 +1,9 @@
 import {  Component, OnInit, ViewChild } from '@angular/core';
-import { ServerService } from '../server.service';
+// import { ServerService } from '../server.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ServerService } from 'src/services/server.service';
+
 
 @Component({
   selector: 'app-seeker',

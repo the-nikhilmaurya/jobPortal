@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ServerService } from '../server.service';
-import { RecruiterComponent } from '../recruiter/recruiter.component';
+import { ServerService } from 'src/services/server.service';
+// import { ServerService } from '../server.service';
+// import { RecruiterComponent } from '../recruiter/recruiter.component';
 
 
 @Component({
