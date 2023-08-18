@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 // import { ServerService } from '../server.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { ServerService } from 'src/services/server.service';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent  {
   constructor(private apiCalls: ServerService, private router: Router, private route: ActivatedRoute) {
 
   }
@@ -21,10 +21,7 @@ export class RegistrationComponent implements OnInit {
   email = ""
   isValid!: Boolean
   error: Boolean = true
-  ngOnInit(): void {
-    console.log('init from registration ', this.email)
-
-  }
+ 
 
 
 

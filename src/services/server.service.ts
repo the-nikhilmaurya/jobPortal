@@ -28,7 +28,6 @@ export class ServerService {
   check(formData:any):Observable<any>{
     const data = {
       email: formData.email,
-      usertype: formData.usertype,
       password: formData.password,
     };
     console.log("data = "+data)
@@ -83,7 +82,9 @@ export class ServerService {
       return this.http.get(`http://localhost:3000/checkemail/${email}`);
     }
 
- 
+    getseekers(id:number):Observable<any>{
+      return this.http.get(`http://localhost:3000/getseeker/${id}`)
+    }
 
  
 }

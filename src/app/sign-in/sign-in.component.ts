@@ -20,18 +20,19 @@ export class SignInComponent {
   hide = true
   error:Boolean = true
   isValid!:Boolean
+  
   SignIn(){
     this.isValid = false
-    console.log(this.signInform.value)
+    let data!:any
     const userdata = this.signInform.value
-    console.log('userdata '+userdata)
     this.apiCalls.check(userdata).subscribe((res)=>{
-      // console.log('res '+res)
       this.isValid = res.isValid
+      data = res.data
+      userdata['usertype'] = data.usertype
     if(this.isValid == true)
     {
       localStorage.setItem("userdata",JSON.stringify(userdata))
-      console.log('if '+this.isValid)
+      // console.log('if '+this.isValid)
       if(userdata.usertype === 'recruiter'){
         console.log('from recruiter')
         this.auth.login()

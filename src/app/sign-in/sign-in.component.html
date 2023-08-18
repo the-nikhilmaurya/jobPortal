@@ -30,7 +30,7 @@
                 </mat-form-field>
             </div>
             <!-- select user type  -->
-            <div>
+            <!-- <div>
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>selectUser</mat-label>
                     <mat-select name="usertype" required ngModel >
@@ -39,14 +39,14 @@
                     <mat-hint class="danger" *ngIf="formDetails.controls['selectUser']?.touched ">required</mat-hint>
                     </mat-select>
                 </mat-form-field>
-            </div>
+            </div> -->
 
             <span class="danger" [style.display]="error ? 'none' : 'block'">credentials didn't match</span>
        
             
             <!-- submit button -->
             <div class="d-flex">
-                <button type="submit" [disabled]="!formDetails.valid" id="btn-register" color="primary" mat-raised-button>SignIn</button>
+                <button type="submit" id="btn-register" color="primary" mat-raised-button>SignIn</button>
             </div>
             <div class="d-flex" style="margin-top: 5px;">
                 Don't Have an account?

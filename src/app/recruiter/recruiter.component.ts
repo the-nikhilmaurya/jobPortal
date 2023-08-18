@@ -39,30 +39,22 @@ export class RecruiterComponent implements OnInit {
   loadData(){
     this.apiCalls.showJobs(this.email).subscribe((res)=>{
       this.response = res
-      // console.log(res)
-      // console.log(this.response)
       this.dataSource = new MatTableDataSource(this.response);
       this.dataSource.paginator = this.paginator;
     
     })
   }
   ngOnInit(): void {
-    // console.log('ngOnInt '+this.email)
     this.loadData()
   }
 
   displayedColumns: string[] = ['id', 'jobtitle', 'salary', 'seekers', 'actions'];
 
-  viewJob(id:any){
-    // console.log(id)
-
-  }
+ 
   deleteJob(id:any){
-    // console.log(id)
     this.apiCalls.deleteJob(id).subscribe((res)=>{
       this.response = res
       this.loadData()
-      // console.log(res)
     })
 
   }
@@ -95,8 +87,6 @@ export class RecruiterComponent implements OnInit {
     })
  
   }
-
-  
 
 }
 

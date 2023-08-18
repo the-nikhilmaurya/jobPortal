@@ -14,6 +14,7 @@ const routes: Routes = [
   {path:'signIn', component:SignInComponent},
   {path:'recruiter',canActivate:[AuthguradService],component:RecruiterComponent},
   {path:'seeker',canActivate:[AuthguradService],component:SeekerComponent},
+  // {path:'seeker',component:SeekerComponent},
   {path:'**',component:PageNotFoundComponent}         //wildcard route
 ];
 

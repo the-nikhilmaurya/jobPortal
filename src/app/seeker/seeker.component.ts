@@ -14,7 +14,7 @@ export class SeekerComponent implements OnInit {
   
   constructor(private apiCalls:ServerService){}
   response: any[] = []; 
-  displayedColumns: string[] = ['id', 'jobtitle', 'salary', 'location', 'actions'];
+  displayedColumns: string[] = ['id', 'jobtitle', 'salary', 'location', 'View','Apply'];
 
   // dataSource = new MatTableDataSource<any>(this.response);
   dataSource!: MatTableDataSource<any>
@@ -53,14 +53,48 @@ export class SeekerComponent implements OnInit {
   
  
 pageSizes = [2,4,6];
-
+array :string[] =[]
+hint=""
+showHint = false
   onApply(id:number){
-    // console.log(id)
-    console.log(this.email+" from appy")
-    const data = {email: this.email}
-    this.apiCalls.applyJob(id,data).subscribe((res)=>{
-      // console.log(res)
+     this.apiCalls.getseekers(id).subscribe((res)=>{
+      const data = {email: this.email}
+      // this.array = res.seekers
+      console.log(res)
+      if(res.seekers != null)
+      {
+        this.array = res.seekers
+            console.log(this.array,"  ",this.array.indexOf(this.email))
+            if(this.array.indexOf(this.email)>=0){
+              this.hint = `${id} you have already applied`
+              this.showHintMess();
+            console.log('from if you can not apply' )
+          }else{
+            console.log('from else you can apply')
+            this.apiCalls.applyJob(id,data).subscribe((res)=>{
+              console.log('applied success full')
+              this.hint = `${id} your application has been subitted`
+              this.showHintMess();
+            })
+        }
+      }else{
+        console.log('seekers null. you can apply')
+        this.apiCalls.applyJob(id,data).subscribe((res)=>{
+            console.log('applied success full')
+            this.hint = `${id} your application has been subitted`
+            this.showHintMess();
+          })
+            
+      }
+      // console.log(this.array,"  ",this.array.indexOf(this.email))
+
     })
+    // console.log(id)
+    // console.log(this.email+" from appy")
+    // const data = {email: this.email}
+    // this.apiCalls.applyJob(id,data).subscribe((res)=>{
+    //   // console.log(res)
+    // })
 
   }
   viewReponse:any
@@ -75,6 +109,13 @@ pageSizes = [2,4,6];
 
   viewClose(){
     this.exists = false
+  }
+
+  showHintMess() {
+    this.showHint = true;
+    setTimeout(() => {
+      this.showHint = false;
+    }, 5000); 
   }
 
 }
