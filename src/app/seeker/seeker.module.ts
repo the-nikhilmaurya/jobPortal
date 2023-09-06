@@ -2,30 +2,31 @@ import { NgModule } from "@angular/core";
 import { SeekerComponent } from "./seeker.component";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
-import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatCardModule } from "@angular/material/card";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatIconModule } from "@angular/material/icon";
 import { MatTableModule } from "@angular/material/table";
-import { MatInputModule } from "@angular/material/input";
+import { SeekerRoutingModule } from "./seeker-routing.module";
+import { ShowoneComponent } from './showone/showone.component';
+
 
 @NgModule({
 
     declarations:[
-        SeekerComponent 
+        SeekerComponent,
+        ShowoneComponent 
     ],
 
     imports:[
         CommonModule,
-        FormsModule,
-        MatFormFieldModule,
         MatCardModule,
+        FormsModule,
         MatPaginatorModule,
         MatIconModule,
         MatTableModule,
-        MatInputModule,
-
+        SeekerRoutingModule
     ]
+   
 
 })
 

@@ -27,6 +27,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { ServerService } from '../services/server.service'
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatRadioModule } from '@angular/material/radio';
+import { SeekerModule } from './seeker/seeker.module';
 
 
 
@@ -56,7 +57,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatToolbarModule,
     MatPaginatorModule,
     MatSnackBarModule,
-    MatRadioModule
+    MatRadioModule,
+    SeekerModule,
 
   ],
   providers: [ServerService,AuthService,AuthguradService],

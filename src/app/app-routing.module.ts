@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, PreloadingStrategy, RouterModule, Routes } from '@angular/router';
+import {  PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { RegistrationComponent } from './registration/registration.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-
-import { SeekerComponent } from './seeker/seeker.component';
-import { AuthguradService } from '../services/authgurad.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+
 
 
 
@@ -14,10 +13,9 @@ const routes: Routes = [
   {path:'registration',component:RegistrationComponent},
   {path:'signIn', component:SignInComponent},
  
- 
   {path:'recruiter',loadChildren: () => import('../app/recruiter/recruiter.module').then(mod => mod.RecruiterModule)},
 
-  {path:'seeker',canActivate:[AuthguradService],component:SeekerComponent},
+  {path:'seeker',loadChildren: () => import('../app/seeker/seeker.module').then(mod => mod.SeekerModule)},
 
   {path:'**',component:PageNotFoundComponent}         //wildcard route
 ];
@@ -27,7 +25,7 @@ const routerOptions = {
 }
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,routerOptions)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

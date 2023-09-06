@@ -4,7 +4,8 @@ import { AuthguradService } from "src/services/authgurad.service";
 import { SeekerComponent } from "./seeker.component";
 
 const routes: Routes = [
-    {path:'',canActivate:[AuthguradService],component:SeekerComponent}
+    {path:'',component:SeekerComponent}
+    // {path:'',canActivate:[AuthguradService],component:SeekerComponent}
 ]
 
 @NgModule({

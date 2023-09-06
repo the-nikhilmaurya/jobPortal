@@ -1,4 +1,5 @@
 import {  Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ServerService } from 'src/services/server.service';
@@ -13,7 +14,7 @@ import { ServerService } from 'src/services/server.service';
 })
 export class SeekerComponent implements OnInit {
   
-  constructor(private apiCalls:ServerService){}
+  constructor(private apiCalls:ServerService,private dialog:MatDialog){}
   response: any[] = []; 
   displayedColumns: string[] = ['id', 'jobtitle', 'salary', 'location', 'View','Apply'];
 
