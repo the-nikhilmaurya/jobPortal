@@ -1,7 +1,7 @@
 
 <div class="d-flex">
     <mat-card  class="card">
-        <form (ngSubmit)="registerForm()" #formDetails="ngForm">
+        <form (ngSubmit)="onFormSubmit()" [formGroup]="registerForm">
         <mat-card-header class="d-flex">
             <h2>Register here</h2>
         </mat-card-header>
@@ -12,16 +12,16 @@
             <div>
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Name</mat-label>
-                    <input name='name' required ngModel matInput >
-                    <mat-hint class="danger" *ngIf="formDetails.controls['name']?.touched && !formDetails.controls['name'].valid">name is required</mat-hint>
+                    <input name='name' matInput  formControlName="name">
+                    <!-- <mat-hint class="danger" *ngIf="formDetails.controls['name']?.touched && !formDetails.controls['name'].valid">name is required</mat-hint> -->
                 </mat-form-field>
             </div>
             <!-- email -->
             <div>
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Email</mat-label>
-                    <input name="email" matInput email required [(ngModel)]="email">
-                    <mat-hint class="danger" *ngIf="formDetails.controls['email']?.touched && !formDetails.controls['email']?.valid ">email is Invalid</mat-hint>
+                    <input name="email" matInput formControlName="email">
+                    <!-- <mat-hint class="danger" *ngIf="formDetails.controls['email']?.touched && !formDetails.controls['email']?.valid ">email is Invalid</mat-hint> -->
                     <!-- <mat-hint class="danger" *ngIf="formDetails.controls['email']?.touched   && !formDetails.controls['email']?.valid && formDetails.controls['email']?.dirty ">email is invalid</mat-hint> -->
                 </mat-form-field>
             <mat-hint class="danger" [style.display]="error ? 'none' : 'block'">Email exists</mat-hint>
@@ -31,11 +31,11 @@
             <div>
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>password</mat-label>
-                    <input name="password" matInput [type]="hide ? 'password' : 'text'" required ngModel>
+                    <input name="password" matInput [type]="hide ? 'password' : 'text'" formControlName="password">
                     <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
-                    <mat-hint class="danger" *ngIf="formDetails.controls['password']?.touched && !formDetails.controls['password']?.valid">required</mat-hint>
+                    <!-- <mat-hint class="danger" *ngIf="formDetails.controls['password']?.touched && !formDetails.controls['password']?.valid">required</mat-hint> -->
                 </mat-form-field>
             </div>
 
@@ -43,11 +43,11 @@
             <div>
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>confirmPassword</mat-label>
-                    <input name="confirmPassword" matInput [type]="hideConfirm ? 'password' : 'text'" required ngModel >
+                    <input name="confirmPassword" matInput [type]="hideConfirm ? 'password' : 'text'" formControlName="confirmPassword">
                     <button type="button" mat-icon-button matSuffix (click)="hideConfirm = !hideConfirm" [attr.aria-label]="hideConfirm ? 'Hide confirm password' : 'Show confirm password'" [attr.aria-pressed]="hideConfirm">
                       <mat-icon>{{ hideConfirm ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
-                    <mat-hint class="danger" *ngIf=" formDetails.controls['confirmPassword'] && (formDetails.controls['confirmPassword']?.value != formDetails.controls['password']?.value) ">password didn't match</mat-hint>
+                    <!-- <mat-hint class="danger" *ngIf=" formDetails.controls['confirmPassword'] && (formDetails.controls['confirmPassword']?.value != formDetails.controls['password']?.value) ">password didn't match</mat-hint> -->
                 </mat-form-field>
             </div>
 
@@ -55,17 +55,17 @@
             <div>
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>selectUser</mat-label>
-                    <mat-select name="usertype" required ngModel >
+                    <mat-select name="usertype" formControlName="usertype" >
                         <mat-option value="recruiter">recruiter</mat-option>
                         <mat-option value="seeker">Seeker</mat-option>
-                    <mat-hint class="danger" *ngIf="formDetails.controls['selectUser']?.touched ">required</mat-hint>
+                    <!-- <mat-hint class="danger" *ngIf="formDetails.controls['selectUser']?.touched ">required</mat-hint> -->
                     </mat-select>
                 </mat-form-field>
             </div>
             
             <!-- submit button -->
             <div class="d-flex">
-                <button type="submit" [disabled]="!formDetails.valid || !(formDetails.controls['confirmPassword'].value === formDetails.controls['password'].value)" id="btn-register" color="primary" mat-raised-button>SignUp</button>
+                <button type="submit" id="btn-register" color="primary" mat-raised-button>SignUp</button>
                 <!-- (click)="registerUser()"  -->
             </div>
             <div>

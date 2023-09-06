@@ -1,7 +1,7 @@
-import { AfterContentChecked, AfterContentInit, Component, DoCheck, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import {  Component,OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
-import { AddJobsComponent } from '../add-jobs/add-jobs.component';
+import { AddJobsComponent } from './add-jobs/add-jobs.component';
 // import { ServerService } from '../server.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule, rountingComponents } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,10 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import { SignInComponent } from './sign-in/sign-in.component';
-import {  RecruiterComponent } from './recruiter/recruiter.component';
-import { SeekerComponent } from './seeker/seeker.component';
+
 import {MatDialogModule} from '@angular/material/dialog';
-import { AddJobsComponent } from './add-jobs/add-jobs.component';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatTableModule} from '@angular/material/table'; // referece recruiter
 
@@ -27,6 +25,9 @@ import { AuthguradService } from '../services/authgurad.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ServerService } from '../services/server.service'
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatRadioModule } from '@angular/material/radio';
+
 
 
 @NgModule({
@@ -34,12 +35,7 @@ import { ServerService } from '../services/server.service'
     AppComponent,
     RegistrationComponent,
     SignInComponent,
-    RecruiterComponent,
-    SeekerComponent,
-    AddJobsComponent,
-    rountingComponents,
     PageNotFoundComponent,
-   
   ],
   imports: [
     BrowserModule,
@@ -54,11 +50,13 @@ import { ServerService } from '../services/server.service'
     MatSelectModule,
     MatIconModule,
     MatDialogModule,
-    MatSliderModule,
+    MatSliderModule,  
     MatTableModule,
     HttpClientModule,
     MatToolbarModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSnackBarModule,
+    MatRadioModule
 
   ],
   providers: [ServerService,AuthService,AuthguradService],

@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
 // import { ServerService } from '../server.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServerService } from 'src/services/server.service';
@@ -9,13 +9,23 @@ import { ServerService } from 'src/services/server.service';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent  {
+export class RegistrationComponent implements OnInit  {
   constructor(private apiCalls: ServerService, private router: Router, private route: ActivatedRoute) {
 
   }
 
+    ngOnInit(): void {
+        this.registerForm = new FormGroup({
+          'name': new FormControl(null),
+          'email': new FormControl(null),
+          'password': new FormControl(null),
+          'confirmPassword': new FormControl(null),
+          'usertype': new FormControl(null),
+        })
+    }
 
-  @ViewChild('formDetails') signUpform!: NgForm       //example of definite assertion
+  // @ViewChild('formDetails') signUpform!: NgForm       //example of definite assertion
+  registerForm!:FormGroup;
   hide = true
   hideConfirm = true
   email = ""
@@ -25,29 +35,31 @@ export class RegistrationComponent  {
 
 
 
-  registerForm() {
-    this.isValid = false
-    console.log(this.signUpform)
-    const userdata = this.signUpform.value;
-    console.log(userdata)
-    this.apiCalls.checkEmail(this.email).subscribe((res) => {
-      this.isValid = res.isValid
-      console.log('isValid: ', this.isValid)
+  onFormSubmit() {
+    console.log(this.registerForm)
 
-      if (this.isValid == true) {
-        console.log('from if')
-        this.apiCalls.addUser(userdata).subscribe((res) => {
-          console.log('user added' + res)
-        })
-        this.signUpform.reset()
-        this.router.navigate(['signIn'])
-      }
-      else {
-        this.error = false
-        console.log('from else')
-      }
+    // this.isValid = false
+    // console.log(this.signUpform)
+    // const userdata = this.signUpform.value;
+    // console.log(userdata)
+    // this.apiCalls.checkEmail(this.email).subscribe((res) => {
+    //   this.isValid = res.isValid
+    //   console.log('isValid: ', this.isValid)
 
-    })
+    //   if (this.isValid == true) {
+    //     console.log('from if')
+    //     this.apiCalls.addUser(userdata).subscribe((res) => {
+    //       console.log('user added' + res)
+    //     })
+    //     this.signUpform.reset()
+    //     this.router.navigate(['signIn'])
+    //   }
+    //   else {
+    //     this.error = false
+    //     console.log('from else')
+    //   }
+
+    // })
 
   }
 

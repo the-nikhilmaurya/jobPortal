@@ -68,7 +68,17 @@
             <tr><td> <label for="">salary</label></td> <td>{{data.salary }}</td></tr>
             <tr><td> <label for="">location</label></td> <td>{{ data.location }}</td></tr>
             <tr><td> <label for="">description</label></td> <td>{{ data.description }}</td></tr>
-            <tr><td> <label for="">seekers</label></td> <td>{{  data.seekers }}</td></tr>
+            <tr>
+              <td><label for="">seekers</label></td>
+              <td>
+                <table>
+                  <tr *ngFor="let seeker of data.seekers">
+                    <td>{{ seeker }}</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            
 
         </table>
           

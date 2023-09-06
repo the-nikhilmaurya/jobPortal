@@ -16,9 +16,23 @@
   }
 
 #btn-register{
+    cursor: not-allowed;
     width: 40%;
 }
 .danger{
     color:red;
 }
+
+button[disabled] {
+   
+    background-color: #1976d2;
+    color: white; 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
+   
+  }
+  /* #btn1:hover{
+    border: 1px solid red;
+  } */
+
+
 
