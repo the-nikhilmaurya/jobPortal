@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import {  ViewSingleJob, addSingleJob } from 'src/app/recruiter/recruiter.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,22 +36,15 @@ export class ServerService {
   }
 
 
-  //add jobs 
-    addjob(formData:any):Observable<any>{
-      const data = {
-        email: formData.email,
-        jobtitle: formData.jobtitle,
-        salary: formData.salary,
-        location: formData.location,
-        description: formData.description,
-      }
-      console.log("data = "+data)
-      return this.http.post('http://localhost:3000/addjobs',data);
+  //add job
+    addjob(formData:addSingleJob):Observable<addSingleJob>{  
+      console.log("formdata from addjob service call = ",formData)
+      return this.http.post<addSingleJob>('http://localhost:3000/addjobs',formData);
     }
   
     // show added jobs
-    showJobs(email:string):Observable<any>{
-        return this.http.get(`http://localhost:3000/show/${email}`);
+    showJobs(email:string):Observable<ViewSingleJob[]>{
+        return this.http.get <ViewSingleJob[]> (`http://localhost:3000/show/${email}`);
     }
 
     // delete job

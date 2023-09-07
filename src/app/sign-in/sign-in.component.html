@@ -13,7 +13,7 @@
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Email</mat-label>
                     <input name="email" matInput  formControlName="email">
-                    <mat-hint class="danger" *ngIf="signInForm.get('email')?.hasError('required') &&  signInForm.get('email')?.touched  ">email is required</mat-hint>                    
+                    <mat-hint class="danger" *ngIf="signInForm.get('email')?.hasError('required') &&  signInForm.get('email')?.touched  || showError ">email is required</mat-hint>                    
                     <mat-hint class="danger" *ngIf="signInForm.get('email')?.hasError('email') &&  signInForm.get('email')?.touched  ">email is invalid</mat-hint>                    
                 </mat-form-field>
             </div>
@@ -26,7 +26,7 @@
                     <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
-                      <mat-hint class="danger" *ngIf="signInForm.get('password')?.hasError('required') &&  signInForm.get('password')?.touched  ">password is required</mat-hint>                                        
+                      <mat-hint class="danger" *ngIf="(signInForm.get('password')?.hasError('required') &&  signInForm.get('password')?.touched) || showError   ">password is required</mat-hint>                                        
                 </mat-form-field>
             </div>
             
@@ -36,12 +36,15 @@
             
             <!-- submit button -->
             <div class="d-flex" id="btn1">
-                <button type="submit" [disabled]="!signInForm.valid"   color="primary" mat-raised-button>Sign In</button>
+                <!-- <button type="submit" [disabled]="!signInForm.valid"   color="primary" mat-raised-button>Sign In</button> -->
+                <button type="submit"    color="primary" mat-raised-button>Sign In</button>
     
             </div>
             <div class="d-flex" style="margin-top: 10%;">
-                Don't Have an account?
-                <button type="button" (click)="goRegister()" mat-stroked-button >Register</button>
+               <p>
+                    Don't Have an account?
+                    <span style="color:blue" (click)="goRegister()" mat-stroked-button >Register</span>
+                </p>
             </div>
         </mat-card-content>
         

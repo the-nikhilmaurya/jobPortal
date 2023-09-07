@@ -7,14 +7,14 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatIconModule } from "@angular/material/icon";
 import { MatTableModule } from "@angular/material/table";
 import { SeekerRoutingModule } from "./seeker-routing.module";
-import { ShowoneComponent } from './showone/showone.component';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from "@angular/material/button";
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
 
     declarations:[
-        SeekerComponent,
-        ShowoneComponent 
+        SeekerComponent
     ],
 
     imports:[
@@ -24,7 +24,10 @@ import { ShowoneComponent } from './showone/showone.component';
         MatPaginatorModule,
         MatIconModule,
         MatTableModule,
-        SeekerRoutingModule
+        MatDialogModule,
+        SeekerRoutingModule,
+        MatButtonModule,
+        SharedModule
     ]
    
 

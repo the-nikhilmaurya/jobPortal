@@ -1,0 +1,25 @@
+
+<!-- {{ data[0].id }} -->
+
+<h1 class="d-flex" mat-dialog-title> {{ data[0].jobtitle }}  </h1>
+<div mat-dialog-content>
+  
+    <mat-card style="margin : 2%;">
+
+        <div class="jobCard">
+            <div class="dark-bold-text" >  Id : {{ data[0].id }} </div>
+            <div class="dark-bold-text" >  Title : {{ data[0].jobtitle }} </div>
+            <div class="dark-bold-text" >  Email : {{ data[0].email }} </div>
+            <div class="dark-bold-text" >  Salary : {{ data[0].salary }}K </div>
+            <div class="dark-bold-text" >  Location : {{ data[0].location }} </div>
+            <div class="dark-bold-text" >  Description : {{ data[0].description }} </div>
+            <div class="dark-bold-text" >  Seekers : {{ data[0].seekers }} </div>
+        </div>
+
+    </mat-card>
+  
+</div>
+<div class="d-flex" mat-dialog-actions >
+    <button mat-raised-button mat-dialog-close>Close</button>
+</div>
+

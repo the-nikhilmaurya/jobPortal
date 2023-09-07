@@ -1,7 +1,7 @@
 
 <!-- add jobs herere  every job will have its own unique id-->
 <div class="d-flex">
-  <button mat-raised-button (click)="openDialog('0ms', '0ms')">Add Jobs</button>
+  <button mat-raised-button (click)="openDialogAddjob()">Add Jobs</button>
 </div>
 
 
@@ -26,13 +26,15 @@
 
     <ng-container matColumnDef="seekers">
       <th mat-header-cell *matHeaderCellDef>Seekers</th>
-      <td mat-cell *matCellDef="let job">{{ job.seekers }}</td>
+      <td mat-cell *matCellDef="let job">
+        <div *ngFor="let user of job.seekers">{{user}}</div>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let job">
-        <button mat-icon-button color="warn" (click)="deleteJob(job.id)">
+        <button mat-icon-button color="warn" (click)="deleteJob(job.id,job.jobtitle)">
           <mat-icon>delete</mat-icon>
         </button>
         <button mat-icon-button color="primary" (click)="onView(job.id)">
@@ -50,45 +52,9 @@
 </table>
 <mat-paginator #paginator [pageSize]="3" [pageSizeOptions]="[2, 4, 6]"  ></mat-paginator>
 </div>
+
 </div>
 
 
 
-<div class="card" [style.display]="exists ? 'block' : 'none'" >
-
-  <mat-card>
-  <mat-card-content>
-    <!-- {{viewReponse}}  -->
-    <div *ngFor="let data of viewReponse" class="viewd-flex">
-        <table class="">
-
-            <tr><td> <label for="">ID</label></td> <td>{{ data.id }}</td></tr>
-            
-            <tr><td> <label for="">title</label></td> <td>{{  data.jobtitle }}</td></tr>
-            <tr><td> <label for="">salary</label></td> <td>{{data.salary }}</td></tr>
-            <tr><td> <label for="">location</label></td> <td>{{ data.location }}</td></tr>
-            <tr><td> <label for="">description</label></td> <td>{{ data.description }}</td></tr>
-            <tr>
-              <td><label for="">seekers</label></td>
-              <td>
-                <table>
-                  <tr *ngFor="let seeker of data.seekers">
-                    <td>{{ seeker }}</td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-            
-
-        </table>
-          
-
-              
-        <div class="d-flex"><button type="button" mat-raised-button color="primary" (click)="viewClose()">close</button></div>
-  
-     
-      </div>
-  </mat-card-content>
-</mat-card>
-</div>
 

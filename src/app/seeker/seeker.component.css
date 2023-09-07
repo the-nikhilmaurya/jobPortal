@@ -1,23 +1,7 @@
-.backdrop{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.75);
-    z-index: -1;
-    opacity: 20px;
-}
 
 
-.mainBody{
-    backdrop-filter: blur(100px); 
-    background-color: gainsboro;
-    z-index: 21;
-}
-#main{
-    position: relative;
-}
+
+
 
 .header{
     display: flex;
@@ -30,16 +14,9 @@
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 30px;
-    position: relative;
-    z-index: 0;
 }
 
-header>#close{
-    /* margin-top: -33%; */
-    padding-bottom: 30%;
-    margin-right: 5%;
-    /* margin-bottom: 33%; */
-}
+
 .card{
    
     display:flex;
@@ -51,8 +28,6 @@ header>#close{
     left:30%;
     right:30%;
     margin-top:2%;
-   
-    z-index: 200;
     height: 30%;
 
 }
@@ -60,17 +35,5 @@ header>#close{
     display: flex;
     justify-content: center;
     flex-direction: column;
-
-}
-
-label{
-    margin-left: 20px;
-    padding-left: 3%;
-    padding-right: 3%;
-    /* border: 1px solid black; */
-
-}
-tr{
-    border: 1px solid black;
 }
 

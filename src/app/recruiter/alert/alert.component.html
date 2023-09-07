@@ -1,0 +1,39 @@
+<mat-card style="height: 100%; ">
+
+    <div class="d-flex">
+
+    <mat-card-title >
+
+        Are you sure 
+        <mat-card-title>
+            You want to delete 
+        </mat-card-title>
+    
+    </mat-card-title>
+</div>
+
+
+    <mat-card-header class="d-flex">
+        <table>
+
+            <tr>
+                <td class="dark-bold-text" >JobId : </td>
+                <td class="dark-bold-text" >  {{data.id}}  </td>
+            </tr>
+
+            <tr>
+                <td class="dark-bold-text" >JobTitle: </td>
+                <td class="dark-bold-text" >  {{data.jobtitle}}   </td>
+            </tr>
+
+        </table>
+    </mat-card-header>
+
+
+    <mat-card-actions class="d-flex">
+        
+        <button mat-raised-button [mat-dialog-close] = "'yes'"  style="margin-right: 5px;"> Yes </button>
+        <button mat-raised-button mat-dialog-close = "no" > No </button>
+    
+    </mat-card-actions>
+</mat-card>

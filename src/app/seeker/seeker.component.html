@@ -3,12 +3,12 @@
 <div class="d-flex">
   <h2 [style.display]="showHint?'block' : 'none' ">{{hint}}</h2>
 </div>
-<div [ngClass]="{'mainBody': exists}" id="main">
+<div  id="main">
 
-  <!-- try dialog -->
+ 
 
   <div class="container">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [ngClass]="{'mainBody': exists}">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
 
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> id </th>
@@ -53,56 +53,14 @@
 
 
     </table>
-    <mat-paginator [ngClass]="{'mainBody': exists}" #paginator [pageSize]="4"
+    <mat-paginator  #paginator [pageSize]="4"
       [pageSizeOptions]="[2, 4, 6,8]"></mat-paginator>
-
+    
   </div>
 </div>
 
-<div class="card" [style.display]="exists ? 'block' : 'none'">
+
 
 
   
-  <mat-card>
-
-    <mat-card-header class="header">
-      <mat-icon id="close" (click)="viewClose()">close</mat-icon>
-    </mat-card-header>
-
-    <mat-card-content>
-      <!-- {{viewReponse}}  -->
-      <div *ngFor="let data of viewReponse" class="viewd-flex">
-        <table class="">
-
-          <tr>
-            <td> <label for="">ID</label></td>
-            <td>{{ data.id }}</td>
-          </tr>
-          <tr>
-            <td> <label for="">Recruiter</label></td>
-            <td>{{ data.email }}</td>
-          </tr>
-          <tr>
-            <td> <label for="">title</label></td>
-            <td>{{ data.jobtitle }}</td>
-          </tr>
-          <tr>
-            <td> <label for="">salary</label></td>
-            <td>{{data.salary }}</td>
-          </tr>
-          <tr>
-            <td> <label for="">location</label></td>
-            <td>{{ data.location }}</td>
-          </tr>
-          <tr>
-            <td> <label for="">description</label></td>
-            <td>{{ data.description }}</td>
-          </tr>
-          <!-- <tr><td> <label for="">seekers</label></td> <td>{{  data.seekers }}</td></tr> -->
-
-        </table>
-      </div>
-    </mat-card-content>
-
-  </mat-card>
-</div>
+  

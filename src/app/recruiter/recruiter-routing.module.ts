@@ -5,12 +5,8 @@ import { RecruiterComponent } from "./recruiter.component";
 
 
 const routes:Routes =[
-    
-        { 
-            path:'',
-            canActivate:[AuthguradService],
-            component:RecruiterComponent 
-        },                
+        // {path:'',component:RecruiterComponent},
+        { path:'', canActivate:[AuthguradService], component:RecruiterComponent }                
       
 ]   
 

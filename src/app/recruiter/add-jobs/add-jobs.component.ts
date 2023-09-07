@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component,  ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { LocalStorageService } from 'src/app/shared/services/localstorage.services';
 import { ServerService } from 'src/services/server.service';
-// import { ServerService } from '../server.service';
-// import { RecruiterComponent } from '../recruiter/recruiter.component';
+
 
 
 @Component({
@@ -12,40 +12,22 @@ import { ServerService } from 'src/services/server.service';
 })
 export class AddJobsComponent  {
   
-  constructor(private apiCalls:ServerService){}
-
-  
+  constructor(private apiCalls:ServerService,private shared : LocalStorageService){}
  
- @ViewChild('addJobForm') addForm! :NgForm       //example of definite assertion
-//  email:any = "hello@"
+ @ViewChild('addJobForm') addForm! :NgForm   
  error = false
 
- getEmail(){
-    const storedData = localStorage.getItem('userdata');
-    if (storedData !== null) {
-      let data: { email: string, password: string, usertype: string } = JSON.parse(storedData);
-      // console.log("Data from local storage:", data.email);
-      return data.email
-    } else {
-      // console.log("No data found in local storage");
-      return ""
-    }
-  }
-  email = this.getEmail()
+  email = this.shared.getEmail()
 
   addJob(){    
     if (this.email != "") {
-      // console.log(this.addForm.value) 
       const userdata = this.addForm.value;
       userdata['email'] = this.email
-      // console.log('email form local storage '+userdata.email)
       this.apiCalls.addjob(userdata).subscribe((res)=>{
-        // console.log(" from addjob "+res)
+        console.log(" from addjob "+res)
       })
-
     } else {
       this.error = true
-      // console.log("No email ");
     }  
  }
 }

@@ -13,57 +13,60 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class SignInComponent implements OnInit {
 
-  constructor( private snackBar: MatSnackBar ,private router:Router,private route:ActivatedRoute,private apiCalls: ServerService,private auth:AuthService){}
+  constructor(private router: Router, private route: ActivatedRoute, private apiCalls: ServerService, private auth: AuthService) { }
 
   // @ViewChild('formDetails') signInform! :NgForm       //example of definite assertion
   signInForm!: FormGroup
   ngOnInit(): void {
-      this.signInForm = new FormGroup({
-        'email':new FormControl(null,[Validators.required,Validators.email]),
-        'password':new FormControl(null,[Validators.required])
-      })
+    this.signInForm = new FormGroup({
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'password': new FormControl(null, [Validators.required])
+    })
   }
 
-  
+
   hide = true
-  error:Boolean = true
-  isValid!:Boolean
-  
-  SignIn(){
-    console.log(this.signInForm)
+  error: Boolean = true
+  isValid!: Boolean
+  showError = false //will set the error on falsely clicking submit
+  SignIn() {
 
-    this.isValid = false
-    let data!:any
-    const userdata = this.signInForm.value
-
-    // this subscrie to an api call which checks whether user exists
-    this.apiCalls.check(userdata).subscribe((res)=>{
-      this.isValid = res.isValid
-      data = res.data
-      userdata['usertype'] = data.usertype
-    if(this.isValid == true)
-    {
-      localStorage.setItem("userdata",JSON.stringify(userdata))
-      // console.log('if '+this.isValid)
-      if(userdata.usertype === 'recruiter'){
-        console.log('from recruiter')
-        this.auth.login()
-        console.log('form sign-in before navigating to recruiter')
-        this.router.navigate(['recruiter'])
-      }
-      else{
-        this.auth.login()
-        console.log('from seeker')
-        this.router.navigate(['seeker'])
-      }
-    }else{
-      this.error = false
-      console.log('else '+this.isValid)
+    if (!this.signInForm.valid) {
+      console.log('sing clicked');
+      this.showError = true
+      return
     }
-  })
+    else {
+      console.log(this.signInForm)
+      this.isValid = false
+      let data!: any
+      const userdata = this.signInForm.value
+
+      // api call which checks whether user exists
+      this.apiCalls.check(userdata).subscribe((res) => {
+        this.isValid = res.isValid
+        data = res.data
+        // userdata['usertype'] = data.usertype
+
+        if (this.isValid == true)  // this will redirect to next page and save the users data in local storage
+        {
+          userdata['usertype'] = data.usertype
+          localStorage.setItem("userdata", JSON.stringify(userdata))
+          if (userdata.usertype === 'recruiter') {
+            this.router.navigate(['recruiter'])
+          }
+          else {
+            this.router.navigate(['seeker'])
+          }
+        } else {
+          this.error = false
+        }
+        this.showError = false
+      })
+    }
   }
 
-  goRegister(){
+  goRegister() {
     this.router.navigate(['registration'])
   }
 }

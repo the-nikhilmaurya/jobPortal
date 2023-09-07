@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: gainsboro; }
 
@@ -7,4 +8,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background:
     display: flex;
     justify-content: center;
 }
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.cdk-global-scrollblock {
+    width: 100%;
+    overflow-y: hidden; 
+}
+
+.dark-bold-text {
+    color: #333; 
+    font-size: 1rem; 
+    line-height: 1.2; 
+    font-weight:500;
+}
+

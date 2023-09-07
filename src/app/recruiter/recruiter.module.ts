@@ -11,14 +11,19 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatIconModule } from "@angular/material/icon";
 import {MatTableModule} from '@angular/material/table';
 import { RecruiterRouting } from "./recruiter-routing.module";
+import { AlertComponent } from './alert/alert.component';
+import {MatButtonModule} from '@angular/material/button';
 
+import { SharedModule } from "../shared/shared.module";
 
 
 
 @NgModule({
     declarations:[
         RecruiterComponent,
-        AddJobsComponent
+        AddJobsComponent,
+        AlertComponent,
+
     ],
     imports:[
         CommonModule,
@@ -30,6 +35,8 @@ import { RecruiterRouting } from "./recruiter-routing.module";
         MatPaginatorModule,
         MatIconModule,
         MatTableModule,
+        MatButtonModule,
+        SharedModule,
         RecruiterRouting   
     ]
 })

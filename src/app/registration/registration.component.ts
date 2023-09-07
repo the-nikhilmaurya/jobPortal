@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, NgForm } from '@angular/forms';
-// import { ServerService } from '../server.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { Router } from '@angular/router';
 import { ServerService } from 'src/services/server.service';
 
 @Component({
@@ -9,57 +9,64 @@ import { ServerService } from 'src/services/server.service';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent implements OnInit  {
-  constructor(private apiCalls: ServerService, private router: Router, private route: ActivatedRoute) {
+export class RegistrationComponent implements OnInit {
+  constructor(private fb: FormBuilder, private apiCalls: ServerService, private router: Router) { }
 
-  }
-
-    ngOnInit(): void {
-        this.registerForm = new FormGroup({
-          'name': new FormControl(null),
-          'email': new FormControl(null),
-          'password': new FormControl(null),
-          'confirmPassword': new FormControl(null),
-          'usertype': new FormControl(null),
-        })
-    }
-
-  // @ViewChild('formDetails') signUpform!: NgForm       //example of definite assertion
-  registerForm!:FormGroup;
+  registerForm !: FormGroup;
   hide = true
   hideConfirm = true
   email = ""
   isValid!: Boolean
   error: Boolean = true
- 
 
+  ngOnInit(): void {
+    this.registerForm = this.fb.group({
+      'name': ['', [Validators.required]],
+      'email': ['', [Validators.required, Validators.email]],
+      'password': ['', [Validators.required, Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/)]],
+      'confirmPassword': ['', [Validators.required, this.confirmPassword.bind(this)]],
+      'usertype': ['', [Validators.required]],
+    })
+  }
 
+  confirmPassword(confpassword: FormControl): { [anyKey: string]: Boolean } | null {
+    const password = this.registerForm?.get('password')?.value
+    if (confpassword.value != password) {
+      return { 'PasswordMatches': true }
+    }
+    return null
+  }
+  showError = false
 
   onFormSubmit() {
-    console.log(this.registerForm)
 
-    // this.isValid = false
-    // console.log(this.signUpform)
-    // const userdata = this.signUpform.value;
-    // console.log(userdata)
-    // this.apiCalls.checkEmail(this.email).subscribe((res) => {
-    //   this.isValid = res.isValid
-    //   console.log('isValid: ', this.isValid)
+    if (!this.registerForm.valid) {
+      this.showError = true
+    }
+    
+    else {
+      const { confirmPassword, ...userdata } = this.registerForm.value;
+      this.isValid = false
 
-    //   if (this.isValid == true) {
-    //     console.log('from if')
-    //     this.apiCalls.addUser(userdata).subscribe((res) => {
-    //       console.log('user added' + res)
-    //     })
-    //     this.signUpform.reset()
-    //     this.router.navigate(['signIn'])
-    //   }
-    //   else {
-    //     this.error = false
-    //     console.log('from else')
-    //   }
+      // this will confirm that email does not exists
+      this.apiCalls.checkEmail(userdata.email).subscribe((res) => {
+        this.isValid = res.isValid
 
-    // })
+        if (!this.isValid) {
+          this.apiCalls.addUser(userdata).subscribe((res) => {
+            console.log('user added : ', res)
+            this.registerForm.reset()
+            this.router.navigate(['signIn'])
+          })
+        }
+        else {
+          this.error = false
+          console.log('from else')
+        }
+        this.showError = true
+
+      })
+    }
 
   }
 
