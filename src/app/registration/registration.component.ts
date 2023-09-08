@@ -13,11 +13,12 @@ export class RegistrationComponent implements OnInit {
   constructor(private fb: FormBuilder, private apiCalls: ServerService, private router: Router) { }
 
   registerForm !: FormGroup;
-  hide = true
-  hideConfirm = true
-  email = ""
+  hide: Boolean = true                // show password
+  hideConfirm: Boolean = true       // show confirm password
+  
   isValid!: Boolean
   error: Boolean = true
+  showError:Boolean = false    // will turned true if user clicks submit button without entering field
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -29,6 +30,8 @@ export class RegistrationComponent implements OnInit {
     })
   }
 
+
+  // custom validator to confirm whether password and confirm password are same or not
   confirmPassword(confpassword: FormControl): { [anyKey: string]: Boolean } | null {
     const password = this.registerForm?.get('password')?.value
     if (confpassword.value != password) {
@@ -36,38 +39,34 @@ export class RegistrationComponent implements OnInit {
     }
     return null
   }
-  showError = false
+  
 
   onFormSubmit() {
-
     if (!this.registerForm.valid) {
       this.showError = true
     }
-    
+
     else {
-      const { confirmPassword, ...userdata } = this.registerForm.value;
+      const { confirmPassword, ...userdata } = this.registerForm.value;   //userdata now will not have confimpassword
+      
       this.isValid = false
 
       // this will confirm that email does not exists
       this.apiCalls.checkEmail(userdata.email).subscribe((res) => {
         this.isValid = res.isValid
-
-        if (!this.isValid) {
+        if (this.isValid) {
           this.apiCalls.addUser(userdata).subscribe((res) => {
             console.log('user added : ', res)
             this.registerForm.reset()
             this.router.navigate(['signIn'])
           })
-        }
-        else {
+        }else {
           this.error = false
           console.log('from else')
         }
         this.showError = true
-
       })
     }
-
   }
 
   goSignIn() {

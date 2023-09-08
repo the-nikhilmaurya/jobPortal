@@ -28,7 +28,6 @@ const routes:Routes = [
         RouterModule.forChild(routes)
     ],
     exports:[
-        SignInComponent,
         RouterModule
     ]
 

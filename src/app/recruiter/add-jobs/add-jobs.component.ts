@@ -1,6 +1,6 @@
 import { Component,  ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { LocalStorageService } from 'src/app/shared/services/localstorage.services';
+import { LocalStorageService } from 'src/services/localstorage.services';
 import { ServerService } from 'src/services/server.service';
 
 

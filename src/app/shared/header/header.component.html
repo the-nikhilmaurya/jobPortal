@@ -1,0 +1,36 @@
+<div (click)="backdrop()" [ngClass]="showProfile?'backdrop':'none' "></div>
+<div class="navbar" >
+    <mat-toolbar class="" color="primary">
+    
+        <div>
+        <button  (click)="showMenu()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+          <mat-icon>person</mat-icon>
+        </button> 
+      </div>
+     
+      <div>
+        <button mat-raised-button color="accent">
+            <span>{{title}} </span>
+        </button>
+      </div>     
+    </mat-toolbar>
+</div>
+    
+
+      <div *ngIf="showProfile" class="profile">
+       
+          <mat-card style="margin : 2%;">
+            
+              <div class="jobCard">
+
+                  <div class="dark-bold-text" >  Name : {{ name }} </div>
+                  <div class="dark-bold-text" > <p>Email : {{ email }}</p>  </div>
+                  <div class="d-flex">
+                    <button id="logoutBtn" (click)="onLogout()"  mat-raised-button color="warn">logout</button>
+                  </div>                 
+              </div>
+      
+          </mat-card>
+        
+      </div>
+      

@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ServerService } from 'src/services/server.service';
 import { ShowoneComponent } from '../shared/showone/showone.component';
 import { jobdata } from './seeker.model';
-import { LocalStorageService } from '../shared/services/localstorage.services';
+import { LocalStorageService } from '../../services/localstorage.services';
 
 
 

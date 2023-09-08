@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {  ViewSingleJob, addSingleJob } from 'src/app/recruiter/recruiter.model';
+import { addUser } from 'src/app/registration/registration.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,31 +15,18 @@ export class ServerService {
     return this.http.get('http://localhost:3000/show'); 
   }
 
-  addUser(formData:any):Observable<any>{
-    const data = {
-      name: formData.name,
-      email: formData.email,
-      password: formData.password,
-      usertype: formData.usertype
-    };
-    console.log("data from add "+data)
-    return this.http.post('http://localhost:3000/insert',data);
+  addUser(formData:addUser):Observable<any>{
+    return this.http.post('http://localhost:3000/insert',formData);
   }
 
   // check user credentials
-  check(formData:any):Observable<any>{
-    const data = {
-      email: formData.email,
-      password: formData.password,
-    };
-    console.log("data = "+data)
-    return this.http.post('http://localhost:3000/signIn',data);
+  check(formData:{email:string,password:string}):Observable<any>{
+    return this.http.post('http://localhost:3000/signIn',formData);
   }
 
 
   //add job
     addjob(formData:addSingleJob):Observable<addSingleJob>{  
-      console.log("formdata from addjob service call = ",formData)
       return this.http.post<addSingleJob>('http://localhost:3000/addjobs',formData);
     }
   
@@ -58,21 +46,17 @@ export class ServerService {
 
     // apply for seekers
     applyJob(id:number,data:any):Observable<any>{
-     
       return this.http.put(`http://localhost:3000/update/${id}`,data);
     }
 
     // view particular jobs
-     // apply for seekers
-     viewJob(id:number):Observable<any>{
-      console.log(id)
+    viewJob(id:number):Observable<any>{
       return this.http.get(`http://localhost:3000/showone/${id}`);
     }
 
 
     // check email for registration
     checkEmail(email:string):Observable<any>{
-      console.log(email)
       return this.http.get(`http://localhost:3000/checkemail/${email}`);
     }
 
@@ -80,5 +64,8 @@ export class ServerService {
       return this.http.get(`http://localhost:3000/getseeker/${id}`)
     }
 
+    getprofile(email:string):Observable<{name:string,email:string}>{
+      return this.http.get<{name:string,email:string}>(`http://localhost:3000/profile/${email}`)
+    }
  
 }

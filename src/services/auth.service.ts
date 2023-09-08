@@ -19,11 +19,9 @@ export class AuthService {
     const storedData = localStorage.getItem('userdata');
     if (storedData !== null) {
       let data: { email: string, password: string, usertype: string } = JSON.parse(storedData);
-      // console.log("Data from local storage:", data);
       return true
     } else {
       return false
     }
-   
   }
 }

@@ -40,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# nodejs api nodemodules
+/nodejs_api/node_modules

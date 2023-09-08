@@ -1,0 +1,58 @@
+
+.navbar{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 20px;
+    /* border: 4px solid black; */
+    width: 100%;
+    position: relative;
+    z-index: 0;
+}
+
+btnAddjob{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+}
+
+
+
+.profile{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    top: 7vh;
+    left: 3vw;
+    z-index: 111;
+    width:250px;
+}
+
+.backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: transparent;
+    z-index: 10;
+}
+
+.jobCard{
+    display: flex;
+    justify-content: center;
+    margin : 5%;
+    flex-direction: column;
+}
+
+
+
+#logoutBtn {
+    padding-top: 0%;
+    padding-bottom: 0%;
+  }
+ 
+  
+  
+  
+  
+  

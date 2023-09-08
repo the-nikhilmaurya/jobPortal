@@ -1,33 +1,6 @@
-<div class="navbar" >
-<mat-toolbar class="" color="primary">
-
-    <div>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button> 
-  </div>
- 
-  <div>
-    <button mat-raised-button color="accent">
-        <span>{{title}} </span>
-    </button>
-  </div>  
-
-  <div class="logoutbtn">
-    <button (click)="onLogout()" [style.display] = "this.auth.isAuthententicated() ? 'block' : 'none' " mat-raised-button color="warn">logout</button>
-
-  </div>
-      
-
+<app-header *ngIf="showHeader()"></app-header>
+<mat-toolbar  *ngIf="!showHeader()" class="navbar" color="primary">
+  <span class="dark-text">welcome to job portal</span>  
 </mat-toolbar>
-  </div>
 
-
-
-
-<!-- <app-registration></app-registration> -->
-
-<!-- <app-sign-in></app-sign-in> -->
-
-<!-- <app-recruiter></app-recruiter> -->
 <router-outlet></router-outlet>

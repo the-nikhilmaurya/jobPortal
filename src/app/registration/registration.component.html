@@ -10,60 +10,60 @@
            
             <!-- name -->
             <div>
-                <mat-form-field class="example-full-width" appearance="outline">
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker = "true" >
                     <mat-label>Name</mat-label>
                     <input type="email" formControlName="name" matInput >
+                    <mat-hint class="danger" *ngIf="(registerForm.get('name')?.errors?.['required'] && registerForm.get('name')?.touched) || showError ">Name is required</mat-hint>
                 </mat-form-field>
-                <span class="danger d-flex justify-content-center " *ngIf="(registerForm.get('name')?.errors?.['required'] && registerForm.get('name')?.touched) || showError ">Name is required</span>
             </div>
             <!-- email -->
             <div>
-                <mat-form-field class="example-full-width" appearance="outline">
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker = "true" >
                     <mat-label>Email</mat-label>
                     <input matInput formControlName="email">
+                    <mat-hint class="danger" *ngIf="registerForm.get('email')?.errors?.['required'] && registerForm.get('email')?.touched || showError " >Email is required</mat-hint>
+                    <mat-hint class="danger" *ngIf="registerForm.get('email')?.errors?.['email'] && registerForm.get('email')?.touched" >Invalid Email</mat-hint>
+                    <mat-hint class="danger" *ngIf="!error" >Email exists</mat-hint>
                 </mat-form-field>
-                    <span class="danger d-flex justify-content-center " *ngIf="registerForm.get('email')?.errors?.['required'] && registerForm.get('email')?.touched || showError " >Email is required</span>
-                    <span class="danger d-flex justify-content-center " *ngIf="registerForm.get('email')?.errors?.['email'] && registerForm.get('email')?.touched" >Invalid Email</span>
-            <mat-hint class="danger" [style.display]="error ? 'none' : 'block'">Email exists</mat-hint>
             </div>
 
             <!-- password -->
            
             <div>
-                <mat-form-field class="example-full-width" appearance="outline">
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker = "true" >
                     <mat-label>password</mat-label>
                     <input name="password" matInput [type]="hide ? 'password' : 'text'" formControlName="password">
                     <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                      </button>
-                    </mat-form-field>
-                      <span class="danger d-flex justify-content-center " *ngIf="registerForm.get('password')?.errors?.['required'] && registerForm.get('password')?.touched || showError " >Password is required</span>
-                      <span class="danger d-flex justify-content-center " *ngIf="registerForm.get('password')?.errors?.['pattern'] && registerForm.get('password')?.touched" >Password must be a combination of uppercase,lowercase and number  </span>
+                    </button>
+                    <mat-hint class="danger" *ngIf="registerForm.get('password')?.errors?.['required'] && registerForm.get('password')?.touched || showError " >Password is required</mat-hint>
+                    <mat-hint class="danger" *ngIf="registerForm.get('password')?.errors?.['pattern'] && registerForm.get('password')?.touched" >uppercase,lowercase & number needed</mat-hint>
+            </mat-form-field>
             </div>
 
             <!-- confirmPassword -->
             <div>
-                <mat-form-field class="example-full-width" appearance="outline">
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker = "true" >
                     <mat-label>confirmPassword</mat-label>
                     <input formControlName="confirmPassword" matInput [type]="hideConfirm ? 'password' : 'text'" >
                     <button type="button" mat-icon-button matSuffix (click)="hideConfirm = !hideConfirm" [attr.aria-label]="hideConfirm ? 'Hide confirm password' : 'Show confirm password'" [attr.aria-pressed]="hideConfirm">
                       <mat-icon>{{ hideConfirm ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
+                    <mat-hint class="danger" *ngIf="registerForm.get('confirmPassword')?.errors?.['required'] && registerForm.get('confirmPassword')?.touched || showError " >confirmPassword is required</mat-hint>
+                    <mat-hint class="danger" *ngIf="registerForm.get('confirmPassword')?.errors?.['PasswordMatches'] && registerForm.get('confirmPassword')?.touched" >Password didn't match</mat-hint>
                 </mat-form-field>
-                    <span class="danger d-flex justify-content-center " *ngIf="registerForm.get('confirmPassword')?.errors?.['required'] && registerForm.get('confirmPassword')?.touched || showError " >confirmPassword is required</span>
-                    <span class="danger d-flex justify-content-center " *ngIf="registerForm.get('confirmPassword')?.errors?.['PasswordMatches'] && registerForm.get('confirmPassword')?.touched" >Password didn't match</span>
             </div>
 
             <!-- selet user type -->
             <div>
-                <mat-form-field class="example-full-width" appearance="outline">
+                <mat-form-field class="example-full-width" appearance="outline" hideRequiredMarker = "true" >
                     <mat-label>selectUser</mat-label>
                     <mat-select name="usertype" formControlName="usertype" >
                         <mat-option value="recruiter">recruiter</mat-option>
                         <mat-option value="seeker">Seeker</mat-option>
                     </mat-select>
+                    <mat-hint class="danger" *ngIf="registerForm.get('usertype')?.errors?.['required'] && registerForm.get('usertype')?.touched || showError " >usertype is required</mat-hint>
                 </mat-form-field>
-                <span class="danger d-flex justify-content-center " *ngIf="registerForm.get('usertype')?.errors?.['required'] && registerForm.get('usertype')?.touched || showError " >usertype is required</span>
             </div>
             
             <!-- submit button -->
